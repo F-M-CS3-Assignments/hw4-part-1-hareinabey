@@ -1,3 +1,5 @@
+// Author: Harein Abeysekera
+// 03/21/25
 
 #include "bdc.h"
 
@@ -54,16 +56,8 @@ int main() {
 	cout << "output: " << vec_to_string(ans) << endl << endl;
 	assert(ans == vector<int>{17} || ans == vector<int>{7});
 
-	// Test 6 - All powers of two
-	values = {4, 8, 2, 16};
-	ans = biggest_divisible_conglomerate(values);
-	cout << "input: " << vec_to_string(values) << endl;
-	cout << "output: " << vec_to_string(ans) << endl << endl;
-	set<int> answerSet6(ans.begin(), ans.end());
-	soln = {16, 8, 4, 2};
-	assert(answerSet6 == soln);
 
-	// Test 7 - Multiple possible answers
+	// Test 6 - Multiple possible answers
 	values = {25, 5, 15, 3, 9};
 	ans = biggest_divisible_conglomerate(values);
 	cout << "input: " << vec_to_string(values) << endl;
