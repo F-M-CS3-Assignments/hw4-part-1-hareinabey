@@ -33,51 +33,68 @@ int main() {
 
 	// write your own tests here!
 
-	// Test 3 - empty list, should give nothing back
+	// Test 3 - Empty list
 	values = {};
 	ans = biggest_divisible_conglomerate(values);
 	cout << "input: " << vec_to_string(values) << endl;
 	cout << "output: " << vec_to_string(ans) << endl << endl;
 	assert(ans.empty());
 
-	// Test 4 - just one number, should spit it right back
+	// Test 4 - Single number
 	values = {42};
 	ans = biggest_divisible_conglomerate(values);
 	cout << "input: " << vec_to_string(values) << endl;
 	cout << "output: " << vec_to_string(ans) << endl << endl;
 	assert(ans == values);
 
-	// Test 5 - no pairs work, should give me one number
-	values = {7, 11, 13, 17}; // all primes, no divisibility here
+	// Test 5 - No divisible pairs, should return one number
+	values = {7, 11, 13, 17};
 	ans = biggest_divisible_conglomerate(values);
 	cout << "input: " << vec_to_string(values) << endl;
 	cout << "output: " << vec_to_string(ans) << endl << endl;
 	assert(ans == vector<int>{17} || ans == vector<int>{7});
 
-	// Test 6 - small list with some options
+	// Test 6 - All powers of two
 	values = {4, 8, 2, 16};
 	ans = biggest_divisible_conglomerate(values);
 	cout << "input: " << vec_to_string(values) << endl;
 	cout << "output: " << vec_to_string(ans) << endl << endl;
 	set<int> answerSet6(ans.begin(), ans.end());
-	soln = {16, 8, 4, 2}; // all powers of 2 work together
+	soln = {16, 8, 4, 2};
 	assert(answerSet6 == soln);
 
-	// Test 7 - mixed bag, let’s see what happens
+	// Test 7 - Multiple possible answers
 	values = {25, 5, 15, 3, 9};
 	ans = biggest_divisible_conglomerate(values);
 	cout << "input: " << vec_to_string(values) << endl;
 	cout << "output: " << vec_to_string(ans) << endl << endl;
 	set<int> answerSet7(ans.begin(), ans.end());
-	soln = {25, 5}; // 5 divides 25
+	soln = {25, 5};
 	bool opt1 = (answerSet7 == soln);
-	soln = {15, 3}; // 3 divides 15
+	soln = {15, 3};
 	bool opt2 = (answerSet7 == soln);
-	soln = {9, 3}; // 3 divides 9
+	soln = {9, 3};
 	bool opt3 = (answerSet7 == soln);
-	assert(opt1 || opt2 || opt3); // Allow all valid outputs
+	assert(opt1 || opt2 || opt3);
 
-	cout << "All tests passed, woohoo!" << endl;
+	// Test 8 - Already sorted in descending order
+	values = {100, 50, 25, 5, 1};
+	ans = biggest_divisible_conglomerate(values);
+	cout << "input: " << vec_to_string(values) << endl;
+	cout << "output: " << vec_to_string(ans) << endl << endl;
+	soln = {100, 50, 25, 5, 1};
+	set<int> answerSet8(ans.begin(), ans.end());
+	assert(answerSet8 == soln);
+
+	// Test 9 - Large numbers with multiple divisibility chains
+	values = {90, 45, 30, 15, 10, 5, 3, 2};
+	ans = biggest_divisible_conglomerate(values);
+	cout << "input: " << vec_to_string(values) << endl;
+	cout << "output: " << vec_to_string(ans) << endl << endl;
+	set<int> answerSet9(ans.begin(), ans.end());
+	assert((answerSet9 == set<int>{90, 30, 10, 5}) || (answerSet9 == set<int>{90, 45, 15, 5}));
+
+	cout << "All tests passed!" << endl;
 
 	return 0;
 }
