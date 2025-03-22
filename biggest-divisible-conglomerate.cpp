@@ -56,7 +56,7 @@ vector<int> biggest_divisible_conglomerate(vector<int> input){
         return input;
     }
 
-    // Sort in descending order to prioritize larger numbers
+    // Sort in ascending order to prioritize larger numbers
     sort(input.rbegin(), input.rend());
     vector<int> result = build_conglomerate(input, input.size() - 1, {});
 
